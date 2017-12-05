@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Schedule</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h4 text-center>Overall: 0-1 (0-0 Conference)</h4>
+  <ion-list>
+    <ion-list-header>
+      <p item-start>Opponent</p>
+      <p item-end>Time/Result</p>
+    </ion-list-header>
+    <ion-item *ngFor="let item of items">
+      <h4>{{item.opponent}}</h4>
+      <p>{{item.location}}</p>
+      <h4 item-end>{{item.time}}</h4>
+    </ion-item>
+  </ion-list> 
+</ion-content>

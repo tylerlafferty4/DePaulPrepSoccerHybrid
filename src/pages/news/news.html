@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of items">
+    <div *ngIf="!selectedItem">
+    <img src="../../assets/imgs/{{item.img}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.title}}
+      </ion-card-title>
+      <p>
+        {{item.date}}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col text-left>
+        <button ion-button clear small color="danger" icon-start (click)="shareTapped($event, item)">
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="readMoreTapped($event, item)">
+          <!-- <ion-icon name='share-alt'></ion-icon> -->
+          Read More
+        </button>
+      </ion-col>
+    </ion-row>
+    </div>
+  </ion-card>
+  <div *ngIf="selectedItem" padding>
+    <h4>{{selectedItem.title}}</h4>
+    <p>{{selectedItem.description}}</p>
+  </div>
+</ion-content>
