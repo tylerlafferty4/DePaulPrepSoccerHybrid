@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 
 @Component({
   selector: 'page-news',
   templateUrl: 'news.html'
 })
 export class NewsPage {
+  articles: FirebaseListObservable<any[]>;
   selectedItem: any;
   images: string[];
   titles: string[];
@@ -13,7 +16,10 @@ export class NewsPage {
   descriptions: string[];
   items: Array<{img: string, title: string, date: string, description: string}>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
+
+    this.articles = this.firebaseProvider.getNews();
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 

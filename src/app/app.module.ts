@@ -11,6 +11,20 @@ import { FundraiserPage } from '../pages/fundraiser/fundraiser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FirebaseProvider } from './../providers/firebase/firebase';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCelE-mkY_QB4Q06JYx21c7_T8uN1JbF5w",
+  authDomain: "depaulprepsoccer.firebaseapp.com",
+  databaseURL: "https://depaulprepsoccer.firebaseio.com/",
+  projectId: "depaulprepsoccer",
+  storageBucket: "depaulprepsoccer.appspot.com",
+  messagingSenderId: "317024397826"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,6 +36,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +51,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}
