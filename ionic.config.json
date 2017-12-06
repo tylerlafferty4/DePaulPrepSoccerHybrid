@@ -2,5 +2,7 @@
   "name": "DePaulPrepSoccer",
   "app_id": "2216c147",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
